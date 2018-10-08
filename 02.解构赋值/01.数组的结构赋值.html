@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		let arr = [1,2,3,4];
+		
+		//	let x = arr[0];
+		//	let y = arr[1];
+		//	let n = arr[2];
+		//	let m = arr[3];
+		
+		let [x,y,n,m] = arr
+		console.log(x,y,n,m);	//1 2 4 3
+		
+		let [x1,y1,n1,m1] = [1,2,3];
+		console.log(x1,y1,n1,m1);	//1 2 3 undefined
+		
+		
+		// 设置默认值      只有后面的解构是undefined的时候才会走默认值，即使后面解构的值为null不走默认值
+		let [x2,y2=10] = [1,2]
+		console.log(x2,y2);		//1 2
+		
+		let [x3,y3=(function(){console.log("haha");return 10}())] = [1]
+		console.log(x2,y3);		//1 10
+		
+		//省略赋值
+		let [,,x3]=[1,2,3]
+		
+		//不定参数	将后面的项放在一个数组中赋值给y3=[3,4,5]
+		let [n1,n2,...n3] = [1,2,3,4,5]
+		
+		
+	</script>
+</html>

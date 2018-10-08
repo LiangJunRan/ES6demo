@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数的解构赋值</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function getA([a,b,c,...d]){
+			console.log(a,b,c,d);		//1 2 3 Array(2)
+		}
+		getA([1,2,3,4,5])
+		
+		function getB({name="456",age}){
+			console.log(name,age);		//123 10
+		}
+		getB({name:"123",age:10})
+		
+		function getB1({name="456",age=100}={}){
+			console.log(name,age);		//456 100
+		}
+		function getB2({name,age}={name:"456",age:100}){
+			//{name,age}={}
+			console.log(name,age);		//456 100
+		}
+		getB1();		//456 100
+		getB2();		//456 100
+		getB1({});		//456 100
+		getB2({});		//undefined undefined
+	</script>
+</html>

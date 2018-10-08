@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>其他数据类型解构赋值</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//使用数组的解构赋值的形式 如果=等号右边不是一个数组，默认将其转换为类数组（类似数组的对象，必须有一个length的属性）
+		let [x,y]="123"
+		console.log(x,y);   //1 2
+		
+		//使用对象的解构赋值的形式 如果等号右边不是对象 默认转为对象，再进行赋值
+		let {_proto_:a} = 1;
+		console.log(a);
+		console.log(Object(1));//{_proto_:}
+		
+		
+		
+	</script>
+</html>
