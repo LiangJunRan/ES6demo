@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组原型上的扩展方法</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//copyWithin    从原数组中读取内容 替换数组的指定位置的内容
+		// copyWithin(target,start,end)	
+		//target 0为基底索引，复制序列到该位置。如果是负数，target将从末尾开始计算。如果target大于arr.length,将不会发生拷贝
+		//start  0为基底索引，开始复制元素的起始位置。如果是负数，start将从末尾开始计算。如果start被忽略，copyWithin将会从0开始复制。
+		//end    0位基底索引，开始复制元素的结束位置。copyWithin将会拷贝到该位置，但不包括end这个位置的元素。如果是负数，end将从末尾开始计算
+		//			如果end被忽略，copyWithin将会复制到arr.length
+		//原数组的length不变，如果有超出部分截取掉。
+		//会改变原数组的内容
+		let arry1 = [1,2,3,4,5,6,7,8]
+		console.log( arry1.copyWithin(4,2,4) )	//[1, 2, 3, 4, 3, 4, 7, 8]
+		console.log( arry1.copyWithin(3,2) )	//[1, 2, 3, 3, 4, 3, 4, 7]
+		console.log(arry1)						//[1, 2, 3, 3, 4, 3, 4, 7]
+		
+		//fill	按照指定字符去填充数组  将数组的每一项都变成指定字符
+		//fill(value,start,end)
+		//value:用来填充数组元素的值
+		//start：可选，起始索引，默认为0
+		//end：可选，终止索引，默认为length
+		console.log( arry1.fill(0) )	//[0, 0, 0, 0, 0, 0, 0, 0]
+		
+		//filter	过滤数组，根据返回值去过滤原数组。
+		//返回一个数组	原数组不变
+		//var new_array = arr.filter(callback(element,index,array),thisArg)
+		//callback用来测试数组的每个元素的函数。调用参数（element，index，array）。
+		//element 当前在数组中处理的元素
+		//index 可选 正在处理元素在数组中的索引。
+		//array 可选 调用了filter的数组
+		//thisArg 可选  执行callback时用于this的值
+		let ary3 = ["123",1,2,3,"123"]
+		let arr = ary3.filter(function(item,index){
+			//如果返回true就留下当前项，返回false不留下当前项
+			return typeof item === "number"
+		})
+		console.log(ary3)	// [1, 2, 3]
+		
+		//find		先遍历数组，一旦参数函数返回true，停止查找，返回当前项
+		//只会找一个，
+		let i = ary3.find(function(item,index){
+			//如果返回true就留下当前项，返回false不留下当前项
+			return typeof item === "string"
+		})
+		console.log(i)	// 123
+		
+		//findIndex		先遍历数组，一旦参数函数返回true，停止查找，返回当前项的索引
+		//只会找一个，
+		let j = ary3.findIndex(function(item,index){
+			//如果返回true就留下当前项，返回false不留下当前项
+			return typeof item === "string"
+		})
+		console.log(j)	// 0
+		
+		//includes		判断数组中有没有某一项
+		//arr.includes(searchElement, fromIndex)
+		//searchElement   需要查找的元素值
+		//fromIndex		可选，从该索引处开始查找searchElement，如果为负值，则按升序从ary.length-fromIndex 的索引开始搜索。默认为0
+		//返回值为布尔
+		
+		//every 遍历数组，如果遍历每一项都返回true，最后结果为true，只要有一个为false结果就是false
+		
+		//some 遍历数组，只要有一项返回为true，最后结果为true
+		
+		//reduce	迭代		第二个参数作为初始的prev
+		let ary4 = [1,2,3,4,5]
+		console.log(ary4.reduce(function(prev,item){	//10
+			//prev上一次的返回值，item当前项
+			return prev+item;
+		},10))		//prev初始值为10
+		
+		//reduceRight	与reduce一样，只是顺序从右边开始
+		
+		//keys	用来遍历每一项索引的接口，使用for of遍历
+		let ary5 = [1,2,3,4]
+		for(let key of ary5.Keys()){
+			console.log(key)	//key  索引
+		}
+		//使用for of遍历数组，默认遍历每一项
+		for(let item of ary5){
+			console.log(item)	//数组的每一项的值
+		}
+		
+		//entries	遍历接口，可以遍历到索引和每一项
+		for (let e of ary5.entries()) {
+			console.log(e)	//每一次遍历都是一个数组，为索引和当前项-
+		}
+	</script>
+</html>
