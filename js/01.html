@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		var obj = {
+			name: 'baidu',
+			arr:['a','b','c']
+		}
+		var obj2 = obj 
+		var arr = obj.arr
+		
+		obj2.arr = ['a','b','c','d']
+		obj2.name = 'inke'
+		
+		console.log(arr)							//['a','b','c']
+		console.log(obj.name)						//inke
+		console.log(obj === obj2)					//true
+		console.log(obj.arr === obj2.arr)			//true
+		console.log(obj.arr === arr)				//false
+		console.log(obj.arr,typeof obj.arr , typeof arr)	//["a", "b", "c", "d"] "object" "object"
+	</script>
+</html>
